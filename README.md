@@ -466,4 +466,4 @@ uvicorn backend.api.main:app --port 8001    # use different port
 ```
 ---
 
-## ⭐ If this project helped you, please give it a star ⭐️
+## ⭐ If this project helped you, please give it a star ⭐️ !
