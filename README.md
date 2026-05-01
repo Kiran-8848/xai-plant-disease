@@ -1,6 +1,4 @@
-Here’s your final corrected README.md file (clean, consistent, and ready to paste directly into GitHub) 👇
 
-⸻
 
 🌿 XAI Plant Disease Classification
 
