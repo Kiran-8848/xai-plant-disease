@@ -464,30 +464,6 @@ python -m backend.ml.train    # use -m flag
 ```bash
 uvicorn backend.api.main:app --port 8001    # use different port
 ```
-
 ---
 
-## 📄 Research Paper
-
-An IEEE-format research paper is included in the repository covering:
-- Complete methodology
-- Experimental results with all tables
-- Faithfulness and robustness analysis
-- Class-wise explanation findings
-- Comparative discussion
-
----
-
-## 📚 References
-
-1. D. P. Hughes and M. Salathé, "An open access repository of images on plant health," arXiv:1511.08060, 2015.
-2. K. He et al., "Deep residual learning for image recognition," IEEE CVPR, 2016.
-3. R. R. Selvaraju et al., "Grad-CAM: Visual explanations from deep networks," IEEE ICCV, 2017.
-4. M. T. Ribeiro et al., "Why should I trust you?: Explaining the predictions of any classifier," ACM SIGKDD, 2016.
-5. K. P. Ferentinos, "Deep learning models for plant disease detection," Computers and Electronics in Agriculture, 2018.
-
----
-
----
-
-## ⭐ If this project helped you,please give it a ⭐️
+## ⭐ If this project helped you, please give it a star ⭐️
