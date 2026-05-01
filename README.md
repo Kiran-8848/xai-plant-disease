@@ -6,7 +6,6 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red?style=flat-square&logo=pytorch)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green?style=flat-square&logo=fastapi)
 ![React](https://img.shields.io/badge/React-18+-blue?style=flat-square&logo=react)
-![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
 
 ---
 
