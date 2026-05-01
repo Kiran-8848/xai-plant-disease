@@ -1,4 +1,4 @@
-
+⸻
 
 🌿 XAI Plant Disease Classification
 
@@ -22,10 +22,11 @@ This project presents a deep learning-based plant disease classification system 
 
 🗂️ Project Structure
 
-xai-plant-disease/
+
+              xai-plant-disease/
 ├── backend/
 │   ├── api/
-│   │   └── main.py
+│   │   └── main.py              ← FastAPI app
 │   └── ml/
 │       ├── models/
 │       │   └── resnet_model.py
@@ -60,7 +61,6 @@ xai-plant-disease/
     ├── gradcam/
     ├── lime/
     └── evaluation/
-
 ⸻
 
 ⚡ Quickstart
@@ -237,7 +237,7 @@ ResNet18 achieved 96.93% accuracy, and Grad-CAM outperformed LIME in faithfulnes
 
 ⭐ Support
 
-If you like this project, give it a ⭐ on GitHu
+If you like this project, give it a ⭐ on GitHub
 
 :::
 
