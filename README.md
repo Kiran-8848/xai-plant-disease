@@ -1,187 +1,246 @@
-# XAI Plant Disease Classification
+Here’s your final corrected README.md file (clean, consistent, and ready to paste directly into GitHub) 👇
 
-> A Quantitative and Comparative Analysis of Explainable AI Methods for Multi-Class Plant Disease Classification Using Deep Learning
+⸻
 
----
+🌿 XAI Plant Disease Classification
 
-## Project Structure
+A Quantitative and Comparative Analysis of Explainable AI Methods for Multi-Class Plant Disease Classification Using Deep Learning
 
-```
+⸻
+
+📌 Overview
+
+This project presents a deep learning-based plant disease classification system enhanced with Explainable AI (XAI) techniques to interpret model predictions.
+
+* Model: ResNet18 (Transfer Learning)
+* Dataset: PlantVillage Dataset
+* Classes: 16 plant disease categories
+* XAI Methods: Grad-CAM, LIME
+* Framework: PyTorch + FastAPI + React
+
+👉 Focus: Accuracy + Explainability + Trust in AI decisions
+
+⸻
+
+🗂️ Project Structure
+
 xai-plant-disease/
 ├── backend/
 │   ├── api/
-│   │   └── main.py              ← FastAPI app (all endpoints)
+│   │   └── main.py
 │   └── ml/
 │       ├── models/
-│       │   └── resnet_model.py  ← ResNet18 + transfer learning
+│       │   └── resnet_model.py
 │       ├── xai/
-│       │   ├── gradcam.py       ← Grad-CAM implementation
-│       │   ├── lime_explainer.py← LIME implementation
-│       │   └── shap_explainer.py← SHAP implementation
+│       │   ├── gradcam.py
+│       │   └── lime_explainer.py
 │       ├── evaluation/
-│       │   └── metrics.py       ← Faithfulness + Robustness evaluators
+│       │   └── metrics.py
 │       ├── utils/
-│       │   └── data_utils.py    ← Dataset, transforms, DataLoaders
-│       ├── train.py             ← Training pipeline
-│       └── checkpoints/         ← Saved model weights (auto-created)
+│       │   └── data_utils.py
+│       ├── train.py
+│       └── checkpoints/
 ├── frontend/
 │   ├── src/
 │   │   ├── pages/
-│   │   │   ├── Dashboard.jsx    ← Research charts & stats
-│   │   │   ├── Analyze.jsx      ← Single-image XAI analysis
-│   │   │   ├── Compare.jsx      ← Side-by-side method comparison
-│   │   │   └── About.jsx        ← Methodology documentation
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Analyze.jsx
+│   │   │   ├── Compare.jsx
+│   │   │   └── About.jsx
 │   │   ├── components/
 │   │   │   └── Sidebar.jsx
 │   │   ├── App.jsx
 │   │   ├── main.jsx
 │   │   └── index.css
-│   ├── index.html
-│   ├── vite.config.js
-│   └── package.json
 ├── notebooks/
-│   └── experiments.ipynb        ← All 5 experiments end-to-end
+│   └── experiments.ipynb
 ├── configs/
-│   └── config.yaml              ← All hyperparameters
+│   └── config.yaml
 ├── data/
-│   └── PlantVillage/            ← Put dataset here
+│   └── PlantVillage/
 └── outputs/
     ├── gradcam/
     ├── lime/
-    ├── shap/
     └── evaluation/
-```
 
----
+⸻
 
-## Quickstart
+⚡ Quickstart
 
-### 1. Install Python dependencies
+1. Install Dependencies
 
-```bash
-# Create virtual environment
 python -m venv venv
-source venv/bin/activate          # Windows: venv\Scripts\activate
-
+source venv/bin/activate      # Windows: venv\Scripts\activate
 pip install -r requirements.txt
-```
 
-### 2. Download PlantVillage dataset
+⸻
 
-Download from [Kaggle](https://www.kaggle.com/datasets/emmarex/plantdisease) and extract into:
+2. Download Dataset
 
-```
+Download from Kaggle and place in:
+
 data/PlantVillage/
-  Apple___Apple_scab/
-    img001.jpg
-    img002.jpg
-    ...
-  Apple___healthy/
-  Tomato___Early_blight/
-  ...
-```
 
-### 3. Train the model
+⸻
 
-```bash
+3. Train Model
+
 python -m backend.ml.train --config configs/config.yaml
-```
 
-Training takes ~30 min on GPU, ~2 hours on CPU. Model saved to `backend/ml/checkpoints/best_model.pth`.
+* Training Time: ~18–30 min (GPU)
+* Model Path: backend/ml/checkpoints/best_model.pth
 
-### 4. Start the API
+⸻
 
-```bash
+4. Run Backend API
+
 uvicorn backend.api.main:app --host 0.0.0.0 --port 8000 --reload
-```
 
-API docs at: http://localhost:8000/docs
+Docs: http://localhost:8000/docs
 
-### 5. Start the frontend
+⸻
 
-```bash
+5. Run Frontend
+
 cd frontend
 npm install
 npm run dev
-```
 
 Open: http://localhost:5173
 
----
+⸻
 
-## Running Experiments (Jupyter)
+🧪 Experiments
 
-```bash
 pip install jupyter
 cd notebooks
 jupyter notebook experiments.ipynb
-```
 
-Runs all 5 experiments in sequence:
-- **Exp 1**: Train → accuracy, classification report, confusion matrix
-- **Exp 2**: Generate Grad-CAM / LIME / SHAP explanations on test images
-- **Exp 3**: Deletion test → faithfulness AUC scores
-- **Exp 4**: Noise/blur/brightness perturbation → SSIM robustness
-- **Exp 5**: Full comparison table + summary figure
+Experiments Included:
 
----
+* Exp 1: Model training + confusion matrix
+* Exp 2: Grad-CAM & LIME explanations
+* Exp 3: Faithfulness (Deletion Test)
+* Exp 4: Robustness (Noise → SSIM)
+* Exp 5: Comparison analysis
 
-## API Endpoints
+⸻
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET  | `/api/health` | Server health check |
-| GET  | `/api/classes` | List all 38 plant disease classes |
-| POST | `/api/predict` | Fast predict + Grad-CAM |
-| POST | `/api/explain/gradcam` | Grad-CAM explanation |
-| POST | `/api/explain/lime` | LIME explanation |
-| POST | `/api/explain/shap` | SHAP explanation |
-| POST | `/api/explain/compare` | All 3 methods + faithfulness scores |
+🔌 API Endpoints
 
-All POST endpoints accept `multipart/form-data` with a `file` field (image).
+Method	Endpoint	Description
+GET	/api/health	Health check
+GET	/api/classes	List 16 classes
+POST	/api/predict	Prediction + Grad-CAM
+POST	/api/explain/gradcam	Grad-CAM
+POST	/api/explain/lime	LIME
+POST	/api/explain/compare	Compare both
 
----
+⸻
 
-## Key Research Results
+📊 Key Results
 
-| Method | Faithfulness AUC ↓ | Robustness SSIM ↑ | Time |
-|--------|-------------------|-------------------|------|
-| Grad-CAM | **0.31** | **0.88** | ~50ms |
-| SHAP | 0.38 | 0.79 | ~12s |
-| LIME | 0.42 | 0.64 | ~8s |
+Model Performance
 
-**Finding**: Grad-CAM is most faithful AND most robust, with orders-of-magnitude faster inference. SHAP provides additional insight through signed contributions. LIME is the slowest and least stable but fully model-agnostic.
+* Test Accuracy: 96.93%
+* Macro F1-score: 0.97
+* Best Validation Accuracy: 97.45%
 
----
+⸻
 
-## Configuration
+XAI Comparison
 
-All hyperparameters are in `configs/config.yaml`. Key settings:
+Metric	Grad-CAM	LIME
+Faithfulness (AUC ↓)	0.31	0.42
+Robustness (SSIM ↑)	0.88	0.64
+Time	0.05s	8.20s
 
-```yaml
+⸻
+
+🧠 Key Findings
+
+* Grad-CAM is more faithful, robust, and faster
+* LIME is model-agnostic but slower and less stable
+* Model focuses on disease-specific regions
+
+⸻
+
+⚙️ Configuration
+
 model:
   architecture: resnet18
-  num_classes: 38
-  freeze_layers: 6       # Unfreeze all for better accuracy
-
+  num_classes: 16
 training:
   epochs: 30
   learning_rate: 0.001
   early_stopping_patience: 7
-
 xai:
   lime:
-    num_samples: 1000    # Higher = more stable but slower
-  shap:
-    background_samples: 100
-```
+    num_samples: 500
 
----
+⸻
 
-## Dependencies
+🧰 Tech Stack
 
-- **PyTorch** — model training, Grad-CAM gradients
-- **LIME** (`lime`) — superpixel perturbation explanations
-- **SHAP** (`shap`) — DeepExplainer Shapley values
-- **FastAPI** — REST API server
-- **React + Recharts** — research dashboard frontend
+Backend:
+
+* PyTorch
+* FastAPI
+
+Frontend:
+
+* React
+* Vite
+* Recharts
+
+⸻
+
+💻 Hardware
+
+* GPU: NVIDIA RTX 3050
+* Training: ~18 minutes
+* Inference: ~0.018 sec
+* Grad-CAM: ~0.032 sec
+* LIME: ~8.2 sec
+
+⸻
+
+⚠️ Limitations
+
+* Controlled dataset background
+* LIME randomness affects stability
+* XAI methods are approximate
+
+⸻
+
+🚀 Future Work
+
+* Real-world dataset testing
+* EfficientNet comparison
+* Faster XAI techniques
+* Mobile deployment
+
+⸻
+
+📌 Research Contribution
+
+* Quantitative XAI evaluation
+* Faithfulness + robustness analysis
+* Grad-CAM vs LIME comparison
+* Full-stack interpretable AI system
+
+⸻
+
+🏁 Conclusion
+
+ResNet18 achieved 96.93% accuracy, and Grad-CAM outperformed LIME in faithfulness, robustness, and speed, making it more suitable for real-time interpretable plant disease detection systems.
+
+⸻
+
+⭐ Support
+
+If you like this project, give it a ⭐ on GitHu
+
+:::
+
+⸻
